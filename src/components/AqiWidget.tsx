@@ -96,6 +96,8 @@ export default function AqiWidget() {
     <div
       className="flex items-center gap-2 bg-white/5 border border-white/10 px-3 py-1.5 rounded-xl font-mono text-xs shadow-inner"
       title={`${locationName}: Status ${status}`}
+      aria-label={`Current air quality index for ${locationName} is ${aqi} AQI, status is ${status}`}
+      role="status"
     >
       <span className={`w-2 h-2 rounded-full ${dotColor}`}></span>
       <span className="text-white/60 font-semibold">{locationName}:</span>

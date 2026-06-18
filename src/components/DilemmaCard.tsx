@@ -187,7 +187,11 @@ export default function DilemmaCard({
       <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-500/10 rounded-full blur-2xl pointer-events-none -z-10" />
 
       <div className="flex items-center gap-3 mb-4">
-        <span className="text-3xl bg-indigo-500/10 w-12 h-12 rounded-2xl flex items-center justify-center border border-indigo-500/15">
+        <span 
+          role="img" 
+          aria-label={`${dilemma.title} icon`}
+          className="text-3xl bg-indigo-500/10 w-12 h-12 rounded-2xl flex items-center justify-center border border-indigo-500/15"
+        >
           {dilemma.icon}
         </span>
         <div>
@@ -208,15 +212,17 @@ export default function DilemmaCard({
           return (
             <button
               key={idx}
+              type="button"
               disabled={dilemmaCompleted}
               onClick={() => handleSelectOption(idx)}
-              className={`w-full text-left p-4 rounded-2xl border transition-all duration-200 flex items-center justify-between ${
+              className={`w-full text-left p-4 rounded-2xl border transition-all duration-200 flex items-center justify-between focus:ring-2 focus:outline-none focus:ring-indigo-500/50 ${
                 dilemmaCompleted
                   ? isSelected
                     ? 'border-indigo-500/50 bg-indigo-500/10 text-white'
                     : 'border-white/5 bg-white/5 opacity-40 text-white/50'
                   : 'border-white/10 bg-white/5 hover:border-white/20 hover:bg-white/10 text-white'
               }`}
+              aria-label={`${opt.text}: ${opt.subtext}. Impact: ${opt.scoreChange > 0 ? '+' : ''}${opt.scoreChange} eco-score and ${opt.shardChange} gems.`}
             >
               <div className="pr-4">
                 <div className="font-bold text-sm">{opt.text}</div>
@@ -242,8 +248,10 @@ export default function DilemmaCard({
             Dilemma completed! Shards awarded.
           </div>
           <button
+            type="button"
             onClick={handleNextDilemma}
-            className="text-xs bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-xl shadow-lg shadow-indigo-500/20 hover:shadow-indigo-600/30 transition-all hover:scale-105 active:scale-95"
+            className="text-xs bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-xl shadow-lg shadow-indigo-500/20 hover:shadow-indigo-600/30 transition-all hover:scale-105 active:scale-95 focus:ring-2 focus:outline-none focus:ring-indigo-500/50 cursor-pointer"
+            aria-label="Load next daily dilemma scenario"
           >
             Load Next Dilemma ➔
           </button>

@@ -74,10 +74,16 @@ export default function LoggingDrawer({ isOpen, onClose, logAction }: LoggingDra
           isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
         }`}
         onClick={onClose}
+        aria-hidden="true"
       />
 
       {/* Slide-out Drawer Container */}
       <div
+        id="logging-drawer"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="drawer-title"
+        aria-describedby="drawer-desc"
         className={`fixed top-0 right-0 h-full w-full max-w-md bg-slate-900/90 border-l border-white/10 backdrop-blur-xl z-50 shadow-2xl flex flex-col transition-transform duration-300 ease-out ${
           isOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
@@ -85,13 +91,14 @@ export default function LoggingDrawer({ isOpen, onClose, logAction }: LoggingDra
         {/* Drawer Header */}
         <div className="p-6 border-b border-white/10 flex justify-between items-center bg-slate-950/45">
           <div>
-            <h2 className="text-xl font-bold text-white tracking-tight">Log Carbon Action</h2>
-            <p className="text-xs text-white/50 mt-1">Select an action to update your Eco Score & shards</p>
+            <h2 id="drawer-title" className="text-xl font-bold text-white tracking-tight">Log Carbon Action</h2>
+            <p id="drawer-desc" className="text-xs text-white/50 mt-1">Select an action to update your Eco Score & shards</p>
           </div>
           <button
+            type="button"
             onClick={onClose}
-            className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/70 hover:text-white hover:bg-white/15 transition-all"
-            aria-label="Close drawer"
+            className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/70 hover:text-white hover:bg-white/15 transition-all focus:ring-2 focus:outline-none focus:ring-indigo-500/50 cursor-pointer"
+            aria-label="Close action logger drawer"
           >
             ✕
           </button>
@@ -109,12 +116,18 @@ export default function LoggingDrawer({ isOpen, onClose, logAction }: LoggingDra
                   const isPositive = item.scoreChange > 0;
                   return (
                     <button
+                      type="button"
                       key={itemIdx}
                       onClick={() => handleTagClick(cat.type, item)}
-                      className="group text-left border border-white/10 hover:border-white/20 bg-white/5 hover:bg-white/10 p-4 rounded-2xl flex items-center justify-between transition-all active:scale-95 duration-200"
+                      className="group text-left border border-white/10 hover:border-white/20 bg-white/5 hover:bg-white/10 p-4 rounded-2xl flex items-center justify-between transition-all active:scale-95 duration-200 focus:ring-2 focus:outline-none focus:ring-indigo-500/50 cursor-pointer"
+                      aria-label={`Log action: ${item.label}. ${item.desc}. Impact: ${item.scoreChange > 0 ? '+' : ''}${item.scoreChange} eco-score and ${item.shardChange} gems.`}
                     >
                       <div className="flex items-center gap-4">
-                        <span className="text-3xl bg-white/5 w-12 h-12 rounded-xl flex items-center justify-center border border-white/5 group-hover:scale-110 transition-transform">
+                        <span 
+                          role="img" 
+                          aria-label={`${item.label} icon`}
+                          className="text-3xl bg-white/5 w-12 h-12 rounded-xl flex items-center justify-center border border-white/5 group-hover:scale-110 transition-transform"
+                        >
                           {item.icon}
                         </span>
                         <div>

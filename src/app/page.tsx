@@ -95,7 +95,8 @@ export default function Home() {
             {/* CTA action */}
             <button
               onClick={() => setIsDrawerOpen(true)}
-              className="bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold text-xs py-2 px-3 sm:px-4 rounded-xl shadow-lg shadow-emerald-500/10 hover:shadow-emerald-600/20 hover:scale-105 active:scale-95 transition-all cursor-pointer"
+              className="bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold text-xs py-2 px-3 sm:px-4 rounded-xl shadow-lg shadow-emerald-500/10 hover:shadow-emerald-600/20 hover:scale-105 active:scale-95 transition-all cursor-pointer focus:ring-2 focus:outline-none focus:ring-emerald-400"
+              aria-label="Open emission logging drawer"
             >
               + Log
             </button>

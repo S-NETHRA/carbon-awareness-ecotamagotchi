@@ -42,12 +42,14 @@ export default function HistoryPanel({ history, resetState }: HistoryPanelProps)
           <h3 className="text-lg font-bold text-white tracking-tight">Eco Action History</h3>
         </div>
         <button
+          type="button"
           onClick={() => {
             if (confirm('Are you sure you want to clear all data and reset the island?')) {
               resetState();
             }
           }}
-          className="text-xs text-red-400 hover:text-red-300 font-semibold bg-red-500/10 border border-red-500/20 px-3 py-1.5 rounded-xl transition-all active:scale-95"
+          className="text-xs text-red-400 hover:text-red-300 font-semibold bg-red-500/10 border border-red-500/20 px-3 py-1.5 rounded-xl transition-all active:scale-95 focus:ring-2 focus:outline-none focus:ring-red-400 cursor-pointer"
+          aria-label="Reset the island status and clear all history entries"
         >
           Reset Island
         </button>
@@ -72,7 +74,10 @@ export default function HistoryPanel({ history, resetState }: HistoryPanelProps)
                 className="bg-white/5 border border-white/5 hover:border-white/10 rounded-2xl p-3 flex items-center justify-between transition-all"
               >
                 <div className="flex items-center gap-3">
-                  <span className="text-xl bg-white/5 w-9 h-9 rounded-xl flex items-center justify-center border border-white/5">
+                  <span 
+                    aria-hidden="true"
+                    className="text-xl bg-white/5 w-9 h-9 rounded-xl flex items-center justify-center border border-white/5"
+                  >
                     {getIcon(entry.type)}
                   </span>
                   <div>

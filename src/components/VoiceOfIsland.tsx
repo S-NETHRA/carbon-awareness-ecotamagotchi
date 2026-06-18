@@ -94,7 +94,12 @@ export default function VoiceOfIsland({ ecoScore, history }: VoiceOfIslandProps)
     <div className="w-full flex gap-4 items-center rounded-3xl bg-slate-900/40 border border-white/10 p-5 backdrop-blur-md shadow-lg">
       {/* Avatar Container */}
       <div className="relative shrink-0 flex flex-col items-center">
-        <div className="w-16 h-16 rounded-full bg-gradient-to-br from-indigo-500/10 to-purple-500/20 border border-indigo-500/20 flex items-center justify-center text-3xl shadow-inner animate-bounce" style={{ animationDuration: '3s' }}>
+        <div 
+          role="img" 
+          aria-label="Island Spirit Avatar emoji expression"
+          className="w-16 h-16 rounded-full bg-gradient-to-br from-indigo-500/10 to-purple-500/20 border border-indigo-500/20 flex items-center justify-center text-3xl shadow-inner animate-bounce" 
+          style={{ animationDuration: '3s' }}
+        >
           {avatarExpression.split('')[0]}
         </div>
         <span className="absolute -bottom-1 -right-1 bg-slate-800 border border-white/10 px-1 py-0.5 rounded-md text-[8px] text-white/75 font-semibold uppercase tracking-wider">
@@ -103,7 +108,10 @@ export default function VoiceOfIsland({ ecoScore, history }: VoiceOfIslandProps)
       </div>
 
       {/* Bubble */}
-      <div className={`relative flex-1 border rounded-2xl p-4 text-sm leading-relaxed ${bubbleColor} transition-all duration-500`}>
+      <div 
+        aria-live="polite"
+        className={`relative flex-1 border rounded-2xl p-4 text-sm leading-relaxed ${bubbleColor} transition-all duration-500`}
+      >
         {/* Triangle pointer */}
         <div className="absolute top-1/2 -left-2 -translate-y-1/2 w-0 h-0 border-y-8 border-y-transparent border-r-8 border-r-current opacity-20" />
         

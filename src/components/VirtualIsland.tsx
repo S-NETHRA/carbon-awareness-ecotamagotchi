@@ -101,7 +101,13 @@ export default function VirtualIsland({ ecoScore, unlockedUpgrades }: VirtualIsl
           viewBox="0 0 800 600"
           className="w-full h-full object-cover transition-all duration-1000"
           xmlns="http://www.w3.org/2000/svg"
+          role="img"
+          aria-label={`Interactive representation of the Virtual Ecosystem Island. Current status: ${isHigh ? 'Thriving Haven' : isLow ? 'Degraded Wasteland' : 'Struggling Oasis'}.`}
         >
+          <title>Virtual Ecosystem Island</title>
+          <desc>
+            A 3D-styled floating island rendering trees, clean energy installations, or smog depending on the current eco-score.
+          </desc>
           {/* DEFINITIONS FOR GRADIENTS AND FILTERS */}
           <defs>
             {/* Sky Gradients */}

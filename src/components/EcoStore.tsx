@@ -89,6 +89,7 @@ export default function EcoStore({ ecoShards, unlockedUpgrades, purchaseUpgrade 
       {/* Alert Banner */}
       {alertInfo && (
         <div
+          role="alert"
           className={`mb-6 p-4 rounded-2xl border flex items-start justify-between gap-3 text-xs leading-relaxed transition-all duration-300 ${
             alertInfo.type === 'error'
               ? 'border-red-500/25 bg-red-500/10 text-red-300'
@@ -102,8 +103,10 @@ export default function EcoStore({ ecoShards, unlockedUpgrades, purchaseUpgrade 
             <div>{alertInfo.message}</div>
           </div>
           <button
+            type="button"
             onClick={() => setAlertInfo(null)}
-            className="text-white/40 hover:text-white/70 font-bold ml-2 shrink-0 cursor-pointer text-sm"
+            className="text-white/40 hover:text-white/70 font-bold ml-2 shrink-0 cursor-pointer text-sm focus:ring-2 focus:outline-none focus:ring-red-400"
+            aria-label="Dismiss alert"
           >
             ✕
           </button>
@@ -127,7 +130,11 @@ export default function EcoStore({ ecoShards, unlockedUpgrades, purchaseUpgrade 
               <div>
                 {/* Icon & Name */}
                 <div className="flex items-center gap-3 mb-2">
-                  <span className="text-2xl bg-white/5 w-10 h-10 rounded-xl flex items-center justify-center border border-white/5">
+                  <span 
+                    role="img" 
+                    aria-label={`${item.name} icon`}
+                    className="text-2xl bg-white/5 w-10 h-10 rounded-xl flex items-center justify-center border border-white/5"
+                  >
                     {item.icon}
                   </span>
                   <div>
@@ -148,13 +155,18 @@ export default function EcoStore({ ecoShards, unlockedUpgrades, purchaseUpgrade 
 
               {/* Action Button */}
               {isUnlocked ? (
-                <div className="w-full text-center text-xs font-bold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 py-2 rounded-xl">
+                <div 
+                  className="w-full text-center text-xs font-bold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 py-2 rounded-xl"
+                  aria-label={`${item.name} is unlocked and active`}
+                >
                   ✓ Installed & Active
                 </div>
               ) : (
                 <button
+                  type="button"
                   onClick={() => handlePurchase(item.id, item.cost, item.name)}
-                  className="w-full text-center text-xs font-bold py-2 rounded-xl bg-amber-400 hover:bg-amber-500 text-slate-950 shadow-lg shadow-amber-400/15 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
+                  className="w-full text-center text-xs font-bold py-2 rounded-xl bg-amber-400 hover:bg-amber-500 text-slate-950 shadow-lg shadow-amber-400/15 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 focus:ring-2 focus:outline-none focus:ring-amber-400 cursor-pointer"
+                  aria-label={`Purchase ${item.name} upgrade for ${item.cost} gems`}
                 >
                   Purchase Upgrade
                 </button>

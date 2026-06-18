@@ -106,7 +106,11 @@ export default function AnalyticsChart({ history }: AnalyticsChartProps) {
   };
 
   return (
-    <div className="w-full rounded-3xl bg-slate-900/60 border border-white/10 p-6 backdrop-blur-md shadow-xl flex flex-col">
+    <div 
+      role="region" 
+      aria-label="7-Day Carbon Footprint Analytics Chart"
+      className="w-full rounded-3xl bg-slate-900/60 border border-white/10 p-6 backdrop-blur-md shadow-xl flex flex-col"
+    >
       <div className="flex justify-between items-center mb-6">
         <div>
           <span className="text-[10px] uppercase tracking-wider text-indigo-400 font-bold">Carbon Accounting</span>
