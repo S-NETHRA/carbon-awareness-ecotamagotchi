@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+:root {
+  --background: #020617;
+  --foreground: #f8fafc;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: 'Outfit', sans-serif;
+}
+
+/* Custom animations for Virtual Island */
+@keyframes sway {
+  0%, 100% { transform: rotate(-2deg); }
+  50% { transform: rotate(2deg); }
+}
+
+@keyframes sway-slow {
+  0%, 100% { transform: rotate(-1deg); }
+  50% { transform: rotate(1deg); }
+}
+
+@keyframes bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+@keyframes bob-slow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+@keyframes smog {
+  0% { transform: translate(-80px, 0); }
+  50% { transform: translate(80px, 4px); }
+  100% { transform: translate(-80px, 0); }
+}
+
+@keyframes smog-slow {
+  0% { transform: translate(80px, 0); }
+  50% { transform: translate(-100px, -4px); }
+  100% { transform: translate(80px, 0); }
+}
+
+.animate-sway {
+  transform-origin: 0% 100%;
+  animation: sway 5s ease-in-out infinite;
+}
+
+.animate-sway-slow {
+  transform-origin: 0% 100%;
+  animation: sway-slow 7s ease-in-out infinite;
+}
+
+.animate-bob {
+  animation: bob 4s ease-in-out infinite;
+}
+
+.animate-bob-slow {
+  animation: bob-slow 6s ease-in-out infinite;
+}
+
+.animate-smog {
+  animation: smog 25s ease-in-out infinite;
+}
+
+.animate-smog-slow {
+  animation: smog-slow 40s ease-in-out infinite;
+}
+
+.animate-spin-fast {
+  animation: spin 1s linear infinite;
+}
+
+.animate-spin-slow {
+  animation: spin 3s linear infinite;
+}
+
+.animate-spin-sluggish {
+  animation: spin 9s linear infinite;
+}
+
+/* Custom scrollbars for ledger and logging panel */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 5px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 9999px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 9999px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
