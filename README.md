@@ -1,51 +1,33 @@
-# EcoTamagotchi 🏝️
+# EcoTamagotchi - Gamified Carbon Footprint Awareness Platform
 
-**EcoTamagotchi** is a gamified carbon-awareness and sustainability tracker built with Next.js, TypeScript, and Tailwind CSS. The app features a live visual "Ecosystem Island" that grows, degrades, and updates in real time based on your daily transit, diet, and energy decisions.
-
----
-
-## 🚀 Getting Started
-
-To run the application locally:
-
-1. **Install dependencies**:
-   ```bash
-   npm install
-   ```
-
-2. **Start the development server**:
-   ```bash
-   npm run dev
-   ```
-
-3. Open your browser and navigate to `http://localhost:3000`.
+## 🌍 Chosen Vertical & Challenge
+**Challenge 3: Carbon Footprint Awareness Platform**
+EcoTamagotchi is a gamified sustainability web application designed to help individuals understand, track, and reduce their carbon footprint through gamification, interactive visual feedback, and daily behavioral challenges.
 
 ---
 
-## 🎮 Core Features
+## 💡 System Design & Approach
+Traditional carbon footprint software suffers from high user drop-off due to tedious manual form entries (e.g., inputting exact electric utility bills or precise travel mileage). EcoTamagotchi eliminates this friction by leveraging standard carbon-coefficient models mapped to quick-action logs and RPG mechanics.
 
-### 1. The Virtual Island (Visual Core)
-- **State-Reactive Sky & Water**: If the `ecoScore` is high (70-100), the skies clear to vibrant turquoise/emerald tones. If the score plunges (under 40), the environment decays into amber-grays, displaying an animated "Smog Cloud" overlay representing environmental degradation.
-- **Dynamic Assets**: Earn Eco-Shards to purchase structural improvements from the Store. Once unlocked, visual components dynamically construct onto the floating SVG island container:
-  - **Lush Forest**: Grows animated tree clusters.
-  - **Wind Turbine**: Mounts a wind turbine with a rotor speed that spins relative to the health of the island.
-  - **Solar Panel Array**: Installs custom solar panels with ambient gleam indicators.
-  - **Eco-Dome**: wraps the floating island in a protective pulsating energy shield.
-
-### 2. Logging Drawer & State Hook
-- Slide out the action logger from the top bar to record activities like:
-  - **Transport**: Cycle Commute (`+10` Score, `+5` Shards), Electric Metro (`+5` Score, `+3` Shards), Solo Car (`-15` Score).
-  - **Diet**: Vegan Meal (`+8` Score, `+4` Shards), Dairy (`-2` Score, `+1` Shards), Red Meat (`-12` Score).
-  - **Energy**: Eco Mode AC (`+6` Score, `+3` Shards), Left Devices On (`-10` Score).
-- All changes dynamically recalculate balances and append activities into a local ledger. State values persist across page reloads using browser local storage.
-
-### 3. RPG Quests (Daily Dilemmas)
-- A narrative quest card presents tough choices (e.g., opting for public transport vs. a private taxi ride in the rain). Choosing paths grants score rewards and Eco-Shards. Supports rotation decks for developer testing.
-
-### 4. "Daily Roast" Voice of the Island
-- An interactive chatbot representing **Oasis**, the spirit of the island, that evaluates your recent records and gives witty, sarcastic, or encouraging feedback based on your habits.
+### Core Logic & Architecture
+1. **State-Driven Ecosystem Island:** The application's visual layout serves as an environmental mirror. A global state tracker monitors the user's `ecoScore` (Scale: 0-100). 
+   - **High Scores (70-100):** Maintain a thriving virtual ecosystem with vibrant green hues, clear sky backgrounds, and active asset renders.
+   - **Low Scores (<40):** Dynamically transition the user interface using muted gray and amber tones, applying an environmental "Smog Cloud" overlay to indicate a degrading ecosystem.
+2. **Behavioral Gamification Engine:** Incorporates daily RPG dilemma cards to present hard ecological choices. Choosing lower-emission paths rewards players with in-game currency ("Eco-Shards").
+3. **The Eco-Upgrade System:** Players spend accumulated Eco-Shards in a virtual marketplace to buy and visually mount structural assets (e.g., wind turbines, solar panels) onto their virtual environment, directly incentivizing long-term engagement.
 
 ---
 
-## 🛠️ Developer Tools
-- A **Dev Tool Slider** is mounted at the top of the main screen so developers can easily slide the `ecoScore` from `0` to `100` to inspect smog cloud overlays, water tint updates, and visual threshold transitions instantaneously.
+## 🚀 How the Solution Works
+- **State Persistence:** All core metrics (`ecoScore`, `ecoShards`, and unlocked upgrades) are safely tracked across components and saved locally using React lifecycle effects and browser storage.
+- **Dynamic Scoring Weights:**
+  - Selecting public transit or sustainable diets triggers positive mutations in the global environmental state.
+  - Selecting single-occupancy transport or carbon-intensive meals applies temporary state "debuffs" that visibly affect the core island layout.
+- **Witty Feedback Layer:** An integrated "Voice of the Island" module serves as a reactive notifier, outputting witty contextual text blocks that praise green choices or humorously highlight negative emission trends.
+
+---
+
+## 📋 Core Assumptions Made
+- **Emission Averages:** Standard conversion factors (e.g., private car commutes contributing higher carbon weight units than shared electric transit) are configured using static baseline definitions to keep calculations performant and rapid within a frontend environment.
+- **Single-User Scope:** The system assumes a personal context layout tailored to localized daily life decisions.
+- **Browser-Based Storage:** Local state caching is utilized to eliminate heavy remote database dependencies, fitting within a lightweight hackathon submission envelope (< 10 MB).
